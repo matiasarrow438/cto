@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What You Could Have - $2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .fullscreen-wrapper {
+            min-height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+            background: #0066ff;  /* Bright solid blue */
+            background: linear-gradient(
+                125deg,
+                #0080ff 0%,     /* Bright Sky Blue */
+                #0066ff 50%,    /* Medium Blue */
+                #0059ff 100%    /* Slightly Darker Blue */
+            );
+            position: relative;
+        }
+
+        .main-section {
+            min-height: 100vh;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: hidden;
+            padding-right: 100px;
+        }
+
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255,215,0,0.1) 1px, transparent 1px),
+                radial-gradient(circle at 70% 60%, rgba(255,215,0,0.1) 1px, transparent 1px),
+                radial-gradient(circle at 40% 80%, rgba(255,215,0,0.1) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, rgba(255,215,0,0.1) 1px, transparent 1px);
+            background-size: 100px 100px;
+            animation: particleFloat 20s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-height: 90vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .title {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 2.8rem;
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(
+                to right,
+                #FFD700 0%,
+                #FFC000 25%,
+                #FFB000 50%,
+                #FFA500 75%,
+                #FF9500 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: shimmer 3s linear infinite;
+            background-size: 200% auto;
+            z-index: 2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 450px;
+            max-width: 90vw;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 65vh;
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+            aspect-ratio: 9/16;
+            background: black;
+            margin: 0 auto;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .nav-button {
+            cursor: pointer;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-button i {
+            font-size: 12px;
+        }
+
+        .nav-button:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Ensure buttons container is centered */
+        .video-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .content-wrapper {
+                width: 90vw;
+            }
+            
+            .video-wrapper video {
+                height: 55vh;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+                padding: 0 15px;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            background: black;
+        }
+
+        .home-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-button:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .home-button:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .home-button {
+                top: 1rem;
+                left: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Money icons animation */
+        .money-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .money-icon {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0;
+            animation: simpleFloat 8s infinite linear;
+        }
+
+        /* Icon positions */
+        .money-icon:nth-child(1) { top: 15%; left: 25%; animation-delay: 0s; content: "💰"; }
+        .money-icon:nth-child(2) { top: 45%; left: 75%; animation-delay: 0.3s; content: "💎"; }
+        .money-icon:nth-child(3) { top: 65%; left: 35%; animation-delay: 0.6s; content: ""; }
+        .money-icon:nth-child(4) { top: 25%; left: 65%; animation-delay: 0.9s; content: "🏦"; }
+        .money-icon:nth-child(5) { top: 85%; left: 15%; animation-delay: 1.2s; content: "💵"; }
+        .money-icon:nth-child(6) { top: 35%; left: 85%; animation-delay: 1.5s; content: "💸"; }
+        .money-icon:nth-child(7) { top: 5%; left: 45%; animation-delay: 1.8s; content: "🪙"; }
+        .money-icon:nth-child(8) { top: 75%; left: 55%; animation-delay: 2.1s; content: "📊"; }
+        .money-icon:nth-child(9) { top: 55%; left: 5%; animation-delay: 2.4s; content: "💹"; }
+        .money-icon:nth-child(10) { top: 15%; left: 95%; animation-delay: 2.7s; content: "🏧"; }
+        .money-icon:nth-child(11) { top: 95%; left: 35%; animation-delay: 3.0s; content: "💱"; }
+        .money-icon:nth-child(12) { top: 45%; left: 25%; animation-delay: 3.3s; content: "💰"; }
+        .money-icon:nth-child(13) { top: 25%; left: 75%; animation-delay: 3.6s; content: "💎"; }
+        .money-icon:nth-child(14) { top: 75%; left: 85%; animation-delay: 3.9s; content: "📈"; }
+        .money-icon:nth-child(15) { top: 35%; left: 15%; animation-delay: 4.2s; content: "💵"; }
+        .money-icon:nth-child(16) { top: 65%; left: 45%; animation-delay: 4.5s; content: "💸"; }
+        .money-icon:nth-child(17) { top: 15%; left: 35%; animation-delay: 4.8s; content: "🪙"; }
+        .money-icon:nth-child(18) { top: 85%; left: 65%; animation-delay: 5.1s; content: "📊"; }
+        .money-icon:nth-child(19) { top: 45%; left: 95%; animation-delay: 5.4s; content: "💹"; }
+        .money-icon:nth-child(20) { top: 5%; left: 55%; animation-delay: 5.7s; content: "🏧"; }
+
+        @keyframes simpleFloat {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .loading-text {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            background: linear-gradient(
+                45deg,
+                #FFD700 0%,
+                #FFF7CC 25%,
+                #FFD700 50%,
+                #FFF7CC 75%,
+                #FFD700 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            animation: pulse 2s infinite, shimmer 3s linear infinite;
+            z-index: 2;
+        }
+
+        .loading-emoji {
+            position: absolute;
+            font-size: 24px;
+            animation: floatEmoji 1.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes floatEmoji {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="loading-text">$2025 Next 1000x CTO</div>
+    </div>
+
+    <script>
+    window.addEventListener('load', function() {
+        const loadingScreen = document.querySelector('.loading-screen');
+        const emojis = ['💰', '💎', '📈', '🚀', '💵', '🏦', '💸', '🪙'];
+        let emojiCount = 0;
+
+        // Create emojis
+        const createEmoji = () => {
+            if (emojiCount < 8) {  // Reduced for shorter duration
+                const emoji = document.createElement('div');
+                emoji.className = 'loading-emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + 'vw';
+                loadingScreen.appendChild(emoji);
+                
+                setTimeout(() => {
+                    emoji.remove();
+                }, 800);  // Adjusted to match new duration
+                
+                emojiCount++;
+            }
+        };
+
+        // Create emoji every 100ms
+        const emojiInterval = setInterval(createEmoji, 100);
+
+        // Remove loading screen after 0.8 seconds
+        setTimeout(function() {
+            clearInterval(emojiInterval);
+            loadingScreen.style.transition = 'opacity 0.3s';  // Faster fade out
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 300);  // Faster cleanup
+        }, 800);  // Changed to 800ms
+    });
+    </script>
+
+    <div class="fullscreen-wrapper">
+        <section class="main-section">
+            <div class="floating-particles"></div>
+            
+            <div class="content-container">
+                <a href="home.html" class="home-button">
+                    <i class="fas fa-home"></i>
+                </a>
+                <h1 class="title">What's Possible After $2025</h1>
+                <div class="content-wrapper">
+                    <div class="video-wrapper">
+                        <video id="mainVideo" autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo1.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo2.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo3.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo4.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo5.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo6.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo7.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo8.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo9.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo10.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo11.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo12.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo13.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo14.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo15.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo16.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo17.mov" type="video/quicktime">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo18.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo19.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/moneyvideo20.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    
+                    <div class="controls">
+                        <button id="prevBtn" class="nav-button">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="nextBtn" class="nav-button">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <audio id="bgMusic" loop>
+                <source src="audio/background.mp3" type="audio/mp3">
+            </audio>
+        </section>
+    </div>
+
+    <div class="money-background">
+        <div class="money-icon">💰</div>
+        <div class="money-icon">💎</div>
+        <div class="money-icon">📈</div>
+        <div class="money-icon">🏦</div>
+        <div class="money-icon">💵</div>
+        <div class="money-icon">💸</div>
+        <div class="money-icon">🪙</div>
+        <div class="money-icon">📊</div>
+        <div class="money-icon">💹</div>
+        <div class="money-icon">🏧</div>
+        <div class="money-icon">💱</div>
+        <div class="money-icon">💰</div>
+        <div class="money-icon">💎</div>
+        <div class="money-icon">📈</div>
+        <div class="money-icon">💵</div>
+        <div class="money-icon">💸</div>
+        <div class="money-icon">🪙</div>
+        <div class="money-icon">📊</div>
+        <div class="money-icon">💹</div>
+        <div class="money-icon">🏧</div>
+    </div>
+
+    <audio id="buttonSound">
+        <source src="sound/moneyeffect.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const videos = document.querySelectorAll('.video-wrapper video');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let currentVideoIndex = 0;
+
+        // Hide all videos except the first one
+        videos.forEach((video, index) => {
+            if (index !== 0) {
+                video.style.display = 'none';
+            }
+        });
+
+        // Next button click handler
+        nextBtn.addEventListener('click', () => {
+            videos[currentVideoIndex].style.display = 'none';
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            videos[currentVideoIndex].style.display = 'block';
+            videos[currentVideoIndex].play();
+        });
+
+        // Previous button click handler
+        prevBtn.addEventListener('click', () => {
+            videos[currentVideoIndex].style.display = 'none';
+            currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+            videos[currentVideoIndex].style.display = 'block';
+            videos[currentVideoIndex].play();
+        });
+
+        // Add some styling for smooth transitions
+        const style = document.createElement('style');
+        style.textContent = `
+            .video-wrapper video {
+                transition: display 0.3s ease;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .nav-button {
+                cursor: pointer;
+                padding: 10px 20px;
+                background: rgba(0, 0, 0, 0.5);
+                border: none;
+                color: white;
+                border-radius: 5px;
+                transition: background 0.3s ease;
+            }
+            
+            .nav-button:hover {
+                background: rgba(0, 0, 0, 0.7);
+            }
+            
+            .controls {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 20px;
+                z-index: 10;
+            }
+        `;
+        document.head.appendChild(style);
+    });
+
+    const buttonSound = document.getElementById('buttonSound');
+
+    document.querySelectorAll('.nav-button').forEach(button => {
+        button.addEventListener('click', () => {
+            buttonSound.currentTime = 1.0; // Skip first second
+            buttonSound.play();
+        });
+    });
+
+    function navigateWithTransition(url) {
+        buttonSound.currentTime = 1.0; // Skip first second
+        buttonSound.play();
+        // ... rest of your navigation code ...
+    }
+    </script>
+</body>
+</html>
