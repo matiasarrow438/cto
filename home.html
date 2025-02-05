@@ -61,17 +61,17 @@
                             <div class="quote-container">
                                 <div class="quote active">
                                     <i class="fas fa-quote-left"></i>
-                                    <p>"The power of community is what drives real change in the modern financial world."</p>
+                                    <p class="quote-text">"The power of community is what drives real change in the modern financial world."</p>
                                     <span class="quote-author">- Crypto Wisdom</span>
                                 </div>
                                 <div class="quote">
                                     <i class="fas fa-quote-left"></i>
-                                    <p>"When communities unite, financial barriers crumble."</p>
+                                    <p class="quote-text">"When communities unite, financial barriers crumble."</p>
                                     <span class="quote-author">- DeFi Philosophy</span>
                                 </div>
                                 <div class="quote">
                                     <i class="fas fa-quote-left"></i>
-                                    <p>"True wealth is built when communities take control of their financial destiny."</p>
+                                    <p class="quote-text">"True wealth is built when communities take control of their financial destiny."</p>
                                     <span class="quote-author">- Crypto Revolution</span>
                                 </div>
                             </div>
@@ -1213,6 +1213,10 @@
                 opacity: 0;
             }
         }
+
+        .quote-text {
+            transition: opacity 0.5s ease-in-out;
+        }
     </style>
 
     <script>
@@ -1304,6 +1308,42 @@
             buttonSound.play();
         }
     });
+    </script>
+
+    <script>
+    // Array of quotes
+    const quotes = [
+        "The future belongs to those who believe in the beauty of their dreams.",
+        "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+        "The only way to do great work is to love what you do.",
+        "Believe you can and you're halfway there.",
+        "Don't watch the clock; do what it does. Keep going.",
+        "The future depends on what you do today.",
+        "Success is walking from failure to failure with no loss of enthusiasm.",
+        "The harder you work for something, the greater you'll feel when you achieve it.",
+        "Dream big and dare to fail.",
+        "Your time is limited, don't waste it living someone else's life."
+    ];
+
+    let currentQuoteIndex = 0;
+    const quoteElement = document.querySelector('.quote-text'); // Make sure this class exists on your quote element
+
+    // Function to change quote
+    function rotateQuote() {
+        quoteElement.style.opacity = '0';
+        
+        setTimeout(() => {
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+            quoteElement.textContent = quotes[currentQuoteIndex];
+            quoteElement.style.opacity = '1';
+        }, 500);
+    }
+
+    // Change quote every 5 seconds
+    setInterval(rotateQuote, 5000);
+
+    // Add fade transition style
+    quoteElement.style.transition = 'opacity 0.5s ease-in-out';
     </script>
 </body>
 </html>
